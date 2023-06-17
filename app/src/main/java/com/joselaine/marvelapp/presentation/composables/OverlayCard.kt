@@ -5,17 +5,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -29,60 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-
-
-data class CharacterItem(
-    val name: String,
-    val imageUrl: String? = null,
-    var isFavorite: Boolean = false
-)
-
-@Composable
-fun CardItem(characterItem: CharacterItem, modifier: Modifier) {
-    Card(
-        shape = RoundedCornerShape(8.dp),
-        modifier = modifier
-            .height(200.dp)
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-        ) {
-
-            val imagePainter = rememberAsyncImagePainter(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(characterItem.imageUrl)
-                    .crossfade(true)
-                    .build(),
-            )
-
-            Image(
-                painter = imagePainter,
-                contentDescription = "",
-                modifier = Modifier
-                    .width(150.dp)
-                    .height(200.dp),
-                contentScale = ContentScale.Crop
-            )
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-            ) {
-                Text(
-                    text = characterItem.name,
-                    style = MaterialTheme.typography.titleLarge,
-                )
-            }
-        }
-    }
-}
+import com.joselaine.marvelapp.presentation.models.CharacterItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -104,19 +47,19 @@ fun OverlayCard(characterItem: CharacterItem, clickOnCharacter: () -> Unit) {
 
             Image(
                 painter = imagePainter,
-                contentDescription = "Imagem do ${characterItem.name}",
+                contentDescription = "Imagem ${characterItem.name}",
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.Black.copy(alpha = 0.5f))
+                    .background(Color.Black.copy(alpha = OverlayAlpha))
             )
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp),
+                    .padding(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 8.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
@@ -129,12 +72,16 @@ fun OverlayCard(characterItem: CharacterItem, clickOnCharacter: () -> Unit) {
     }
 }
 
+private const val OverlayAlpha = 0.5f
+
 
 @Preview
 @Composable
-fun PreviewCardItem() {
+fun OverlayCardPreview() {
     val characterItem = CharacterItem(
         name = "Exemplo",
-        imageUrl = null
+        imageUrl = "https://i.annihil.us/u/prod/marvel/i/mg/b/b0/4ce59ea2103ac.jpg"
     )
+
+    OverlayCard(characterItem) {}
 }
