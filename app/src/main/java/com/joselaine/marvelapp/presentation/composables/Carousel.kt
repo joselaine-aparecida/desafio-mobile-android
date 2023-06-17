@@ -15,32 +15,32 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.joselaine.marvelapp.domain.models.MarvelCharacter
 
 @Composable
-fun Carousel(listOfImage: MutableList<String?>) {
+fun Carousel(listOfCharacters: MutableList<MarvelCharacter?>) {
     LazyRow(
-        modifier = Modifier.fillMaxSize(),
-        content = {
-            items(listOfImage) { image ->
-                val imagePainter = rememberAsyncImagePainter(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(image)
-                        .crossfade(true)
-                        .build(),
-                )
+        modifier = Modifier.fillMaxSize()
+    ) {
+        items(listOfCharacters) { character ->
+            val imagePainter = rememberAsyncImagePainter(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(character?.imageUrl)
+                    .crossfade(true)
+                    .build(),
+            )
 
-                Image(
-                    painter = imagePainter,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .height(200.dp)
-                        .width(300.dp)
-                        .padding(8.dp),
-                    contentScale = ContentScale.Crop
-                )
-            }
+            Image(
+                painter = imagePainter,
+                contentDescription = "Imagem ${character?.name}",
+                modifier = Modifier
+                    .height(200.dp)
+                    .width(300.dp)
+                    .padding(8.dp),
+                contentScale = ContentScale.Crop
+            )
         }
-    )
+    }
 }
 
 @Preview
