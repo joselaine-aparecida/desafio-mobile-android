@@ -1,10 +1,9 @@
 package com.joselaine.marvelapp.di
 
-import com.joselaine.marvelapp.data.repository.CharactersRepositoryImpl
-import com.joselaine.marvelapp.data.models.DataWrapperResponse
 import com.joselaine.marvelapp.data.datasources.CharactersRemoteDataSourceImpl
 import com.joselaine.marvelapp.data.repository.CharactersRemoteDataSource
 import com.joselaine.marvelapp.data.repository.CharactersRepository
+import com.joselaine.marvelapp.data.repository.CharactersRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,5 +19,5 @@ interface RepositoryModule {
 
     @Binds
     fun bindRemoteDataSource(dataSource: CharactersRemoteDataSourceImpl):
-            CharactersRemoteDataSource<DataWrapperResponse>
+            CharactersRemoteDataSource
 }
