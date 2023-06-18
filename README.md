@@ -17,6 +17,7 @@ Não importa se você é um fã de longa data ou está apenas começando a se av
 - Paging 3
 - Coil
 - Navigation
+- Adaptive Icon para Android 13
 - Testes unitários
 - Testes de interface
 
