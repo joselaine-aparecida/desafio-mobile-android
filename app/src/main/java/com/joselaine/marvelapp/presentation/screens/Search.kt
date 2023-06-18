@@ -32,7 +32,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import com.joselaine.marvelapp.domain.models.MarvelCharacter
-import com.joselaine.marvelapp.presentation.composables.OverlayCard
+import com.joselaine.marvelapp.presentation.composables.MarvelCard
 import com.joselaine.marvelapp.presentation.models.CharacterItem
 import com.joselaine.marvelapp.presentation.ui.theme.RedMarvel
 import com.joselaine.marvelapp.presentation.viewmodels.CharactersViewModel
@@ -59,7 +59,7 @@ fun Search() {
                 ) { index ->
                     val character = charactersPagingData[index]
 
-                    OverlayCard(
+                    MarvelCard(
                         characterItem = CharacterItem(
                             name = character?.name ?: "", imageUrl = character?.imageUrl
                         )
