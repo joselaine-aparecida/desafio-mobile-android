@@ -7,6 +7,8 @@ data class CharacterResponse(
     val id: String,
     @SerializedName("name")
     val name: String,
+    @SerializedName("description")
+    val description: String,
     @SerializedName("thumbnail")
     val thumbnail: ThumbnailResponse
 )

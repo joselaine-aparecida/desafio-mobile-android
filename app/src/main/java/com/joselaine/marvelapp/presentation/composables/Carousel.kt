@@ -32,7 +32,7 @@ fun Carousel(listOfCharacters: MutableList<MarvelCharacter?>) {
 
             Image(
                 painter = imagePainter,
-                contentDescription = "Imagem ${character?.name}",
+                contentDescription = null,
                 modifier = Modifier
                     .height(200.dp)
                     .width(300.dp)
