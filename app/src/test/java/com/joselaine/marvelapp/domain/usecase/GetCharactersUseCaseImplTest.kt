@@ -1,6 +1,7 @@
 package com.joselaine.marvelapp.domain.usecase
 
 import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.joselaine.marvelapp.data.repository.CharactersRepository
 import com.joselaine.marvelapp.utils.MainCoroutineRule
 import com.joselaine.marvelapp.utils.MarvelCharacterFactory
@@ -12,6 +13,7 @@ import io.mockk.impl.annotations.MockK
 import junit.framework.TestCase.assertNotNull
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -30,6 +32,7 @@ class GetCharactersUseCaseImplTest {
     private val hero = MarvelCharacterFactory().create(MarvelCharacterFactory.Hero.ThreeDMan)
 
     private val fakePagingSource = PagingSourceFactory().create(listOf(hero))
+    private val fakePagingData = PagingData.from(listOf(hero))
 
     @Before
     fun setUp() {
@@ -39,20 +42,23 @@ class GetCharactersUseCaseImplTest {
 
     @Test
     fun `should validate flow paging data creation when invoke from use case is called`() =
-     runBlocking<Unit> {
+        runBlocking {
             coEvery { repository.getCharacters("") }
                 .returns(fakePagingSource)
+
+            coEvery { repository.getCachedCharacters("", any()) }
+                .returns(flowOf(fakePagingData))
 
             val result = getCharactersUseCase
                 .invoke(GetCharactersUseCase.GetCharactersParams("", PagingConfig(20)))
 
-            coVerify { repository.getCharacters("") }
+            coVerify { repository.getCachedCharacters("", any()) }
 
             assertNotNull(result.first())
         }
 
     @Test(expected = Exception::class)
-    fun `should throw exception when repository throws exception`() =  runBlocking<Unit> {
+    fun `should throw exception when repository throws exception`() = runBlocking<Unit> {
         val params = GetCharactersUseCase.GetCharactersParams("query", PagingConfig(20))
         coEvery { repository.getCharacters(any()) } throws Exception()
 
