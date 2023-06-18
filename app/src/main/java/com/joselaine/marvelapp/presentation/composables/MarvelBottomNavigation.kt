@@ -23,7 +23,7 @@ import com.joselaine.marvelapp.presentation.ui.theme.RedMarvel
 @Composable
 fun MarvelBottomNavigation(navController: NavController) {
     val itemsInBottomNavigation = listOf(
-        Screens.Home, Screens.AboutUs
+        Screens.Home, Screens.Search
     )
     BottomNavigation(
         backgroundColor = RedMarvel,
