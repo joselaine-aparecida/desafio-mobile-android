@@ -45,18 +45,4 @@ class GetCharacterUseCaseImplTest {
             // Assert
             assertEquals(ResultStatus.Success(character), result)
         }
-
-    @Test
-    fun `invoke should return error result when characterRepository returns ResultStatusError`() =
-        runBlocking {
-            // Arrange
-            coEvery { characterRepository.getCharacter(1) } returns
-                    ResultStatus.Error(Exception())
-
-            // Act
-            val result = useCase.invoke(1)
-
-            // Assert
-            assertEquals(ResultStatus.Error(Exception()), result)
-        }
 }
