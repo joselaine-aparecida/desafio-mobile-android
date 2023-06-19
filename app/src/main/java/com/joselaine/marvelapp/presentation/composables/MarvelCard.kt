@@ -29,9 +29,13 @@ import com.joselaine.marvelapp.presentation.models.CharacterItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MarvelCard(characterItem: CharacterItem, clickOnCharacter: () -> Unit) {
+fun MarvelCard(
+    modifier: Modifier = Modifier,
+    characterItem: CharacterItem,
+    clickOnCharacter: () -> Unit
+) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(200.dp),
         onClick = { clickOnCharacter() },
@@ -83,5 +87,5 @@ fun OverlayCardPreview() {
         imageUrl = "https://i.annihil.us/u/prod/marvel/i/mg/b/b0/4ce59ea2103ac.jpg"
     )
 
-    MarvelCard(characterItem) {}
+    MarvelCard(characterItem = characterItem) {}
 }

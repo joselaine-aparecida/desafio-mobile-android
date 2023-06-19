@@ -1,7 +1,7 @@
 package com.joselaine.marvelapp.data.db
 
-object DbConstants {
-    const val APP_DATABASE_NAME = "app_database"
+object DataBaseConstants {
+    const val APP_DATABASE_NAME = "database_marvelapp"
     const val CHARACTERS_TABLE_NAME = "characters"
     const val CHARACTERS_COLUMN_INFO_ID = "id"
     const val CHARACTERS_COLUMN_INFO_NAME = "name"

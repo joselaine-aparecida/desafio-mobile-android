@@ -13,7 +13,7 @@ import com.joselaine.marvelapp.presentation.viewmodels.CharactersViewModel
 
 @Composable
 fun ScreenController(
-    modifier: Modifier = Modifier, navController: NavHostController
+    modifier: Modifier, navController: NavHostController
 ) {
     val viewModel = hiltViewModel<CharactersViewModel>()
 
@@ -25,8 +25,8 @@ fun ScreenController(
                 onRetry = { charactersPagingData.retry() },
                 clickOnCharacter = { navController.navigate("details/$it") })
         }
-        composable(Screens.Search.route) {
-            Search()
+        composable(Screens.Favorites.route) {
+            Favorites(modifier)
         }
         composable(Screens.Details.route,
             arguments = listOf(
