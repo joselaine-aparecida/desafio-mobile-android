@@ -15,6 +15,7 @@ Não importa se você é um fã de longa data ou está apenas começando a se av
 - Detekt (análise estática de código)
 - Jetpack Compose
 - Paging 3
+- Caching Local com Room
 - Coil
 - Navigation
 - Testes unitários
@@ -22,7 +23,10 @@ Não importa se você é um fã de longa data ou está apenas começando a se av
 
 ## 📸 Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<p float="left">
+   <img src="https://github.com/joselaine-aparecida/desafio-mobile-android/blob/develop/screenshots/image2.jpeg?raw=true" width="300"/> 
+  <img src="https://github.com/joselaine-aparecida/desafio-mobile-android/blob/develop/screenshots/image1.jpeg?raw=true" width="300" />
+</p>
 
 
 ## 📍 Roadmap
