@@ -25,6 +25,7 @@ class CharactersRepositoryImpl @Inject constructor(
     }
 
 
+    @Suppress("TooGenericExceptionCaught")
     override suspend fun getCharacter(id: Int): ResultStatus<MarvelCharacter> {
         return try {
             ResultStatus.Success(remoteDataSource.fetchCharacter(id).characters[0])

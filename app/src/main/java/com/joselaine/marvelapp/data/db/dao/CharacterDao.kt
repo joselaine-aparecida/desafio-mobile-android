@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.joselaine.marvelapp.data.db.entity.CharacterEntity
-import com.joselaine.marvelapp.data.db.DbConstants
+import com.joselaine.marvelapp.data.db.DataBaseConstants
 
 @Dao
 interface CharacterDao {
@@ -14,9 +14,9 @@ interface CharacterDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(characters: List<CharacterEntity>)
 
-    @Query("SELECT * FROM ${DbConstants.CHARACTERS_TABLE_NAME}")
+    @Query("SELECT * FROM ${DataBaseConstants.CHARACTERS_TABLE_NAME}")
     fun pagingSource(): PagingSource<Int, CharacterEntity>
 
-    @Query("DELETE FROM ${DbConstants.CHARACTERS_TABLE_NAME}")
+    @Query("DELETE FROM ${DataBaseConstants.CHARACTERS_TABLE_NAME}")
     suspend fun clearAll()
 }

@@ -3,7 +3,7 @@ package com.joselaine.marvelapp.di
 import android.content.Context
 import androidx.room.Room
 import com.joselaine.marvelapp.data.db.AppDatabase
-import com.joselaine.marvelapp.data.db.DbConstants
+import com.joselaine.marvelapp.data.db.DataBaseConstants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +20,7 @@ object DatabaseModule {
     ): AppDatabase = Room.databaseBuilder(
         context,
         AppDatabase::class.java,
-        DbConstants.APP_DATABASE_NAME
+        DataBaseConstants.APP_DATABASE_NAME
     ).build()
 
     @Provides

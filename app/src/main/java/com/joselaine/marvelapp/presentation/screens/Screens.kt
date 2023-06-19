@@ -3,15 +3,15 @@ package com.joselaine.marvelapp.presentation.screens
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class Screens(val route: String, var label: String, val icon: ImageVector) {
-    object Home : Screens(ROUTE_HOME, "Home", Icons.Default.Home)
-    object Search : Screens(ROUTE_SEARCH, "Search", Icons.Default.Search)
-    object Details : Screens(ROUTE_DETAILS, "", Icons.Default.Person)
+    object Home : Screens(RouteHome, "Home", Icons.Default.Home)
+    object Favorites : Screens(RouteFavorites, "Favorites", Icons.Default.Star)
+    object Details : Screens(RouteDetails, "", Icons.Default.Person)
 }
 
-const val ROUTE_HOME = "home"
-const val ROUTE_DETAILS = "details/{id}"
-const val ROUTE_SEARCH = "search"
+const val RouteHome = "home"
+const val RouteDetails = "details/{id}"
+const val RouteFavorites = "favorites"
