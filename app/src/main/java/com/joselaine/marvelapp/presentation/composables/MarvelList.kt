@@ -16,7 +16,7 @@ import com.joselaine.marvelapp.presentation.models.CharacterItem
 fun MarvelList(
     characterPagingData: LazyPagingItems<MarvelCharacter>,
     onRetry: () -> Unit,
-    clickOnCharacter: (MarvelCharacter?) -> Unit
+    clickOnCharacter: (Int) -> Unit
 ) {
     LazyColumn(
         contentPadding = PaddingValues(10.dp),
@@ -35,7 +35,10 @@ fun MarvelList(
                     imageUrl = character?.imageUrl
                 )
             ) {
-                clickOnCharacter(character)
+                character?.id?.let {idString ->
+                    clickOnCharacter(idString.toInt())
+                }
+
             }
         }
 

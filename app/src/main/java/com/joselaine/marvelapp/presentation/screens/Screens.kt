@@ -13,5 +13,5 @@ sealed class Screens(val route: String, var label: String, val icon: ImageVector
 }
 
 const val ROUTE_HOME = "home"
-const val ROUTE_DETAILS = "details"
+const val ROUTE_DETAILS = "details/{id}"
 const val ROUTE_SEARCH = "search"

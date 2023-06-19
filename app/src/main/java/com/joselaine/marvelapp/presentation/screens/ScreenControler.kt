@@ -4,8 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.joselaine.marvelapp.presentation.viewmodels.CharactersViewModel
 
@@ -21,13 +23,16 @@ fun ScreenController(
         composable(Screens.Home.route) {
             Home(characterPagingData = charactersPagingData,
                 onRetry = { charactersPagingData.retry() },
-                clickOnCharacter = { navController.navigate("details") })
+                clickOnCharacter = { navController.navigate("details/$it") })
         }
         composable(Screens.Search.route) {
             Search()
         }
-        composable(Screens.Details.route) {
-            Details()
+        composable(Screens.Details.route,
+            arguments = listOf(
+                navArgument("id") { type = NavType.IntType }
+            )) {
+            Details(navController)
         }
     }
 }
