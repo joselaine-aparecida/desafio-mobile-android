@@ -1,10 +1,9 @@
 package com.joselaine.marvelapp.presentation.paging
 
 import androidx.paging.PagingSource
-import com.joselaine.marvelapp.data.models.DataWrapperResponse
 import com.joselaine.marvelapp.data.repository.CharactersRemoteDataSource
 import com.joselaine.marvelapp.domain.models.MarvelCharacter
-import com.joselaine.marvelapp.utils.DataWrapperResponseFactory
+import com.joselaine.marvelapp.utils.CharacterPagingFactory
 import com.joselaine.marvelapp.utils.MainCoroutineRule
 import com.joselaine.marvelapp.utils.MarvelCharacterFactory
 import io.mockk.MockKAnnotations
@@ -12,7 +11,7 @@ import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -24,9 +23,9 @@ class CharactersPagingSourceTest {
     var mainCoroutineRule = MainCoroutineRule()
 
     @MockK
-    lateinit var remoteDataSource: CharactersRemoteDataSource<DataWrapperResponse>
+    lateinit var remoteDataSource: CharactersRemoteDataSource
 
-    private val dataWrapperResponseFactory = DataWrapperResponseFactory()
+    private val characterPagingFactory = CharacterPagingFactory()
 
     private val characterFactory = MarvelCharacterFactory()
 
@@ -42,7 +41,7 @@ class CharactersPagingSourceTest {
     fun `should return a success load result when load is called`() = runBlocking {
         // Arrange
         coEvery { remoteDataSource.fetchCharacters(any()) }
-            .returns(dataWrapperResponseFactory.create())
+            .returns(characterPagingFactory.create())
 
         // Act
         val result = charactersPagingSource.load(

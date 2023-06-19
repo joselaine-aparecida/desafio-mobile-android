@@ -1,12 +1,11 @@
 package com.joselaine.marvelapp.domain.usecase
 
-import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.joselaine.marvelapp.domain.usecase.base.PagingUseCase
 import com.joselaine.marvelapp.data.repository.CharactersRepository
 import com.joselaine.marvelapp.domain.models.MarvelCharacter
 import com.joselaine.marvelapp.domain.usecase.GetCharactersUseCase.GetCharactersParams
+import com.joselaine.marvelapp.domain.usecase.base.PagingUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -22,9 +21,6 @@ class GetCharactersUseCaseImpl @Inject constructor(
     GetCharactersUseCase {
 
     override fun createFlowObservable(params: GetCharactersParams): Flow<PagingData<MarvelCharacter>> {
-        val pagingSource = charactersRepository.getCharacters(params.query)
-        return Pager(config = params.pagingConfig) {
-            pagingSource
-        }.flow
+        return charactersRepository.getCachedCharacters(params.query, params.pagingConfig)
     }
 }

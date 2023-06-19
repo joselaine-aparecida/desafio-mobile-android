@@ -10,6 +10,7 @@ Não importa se você é um fã de longa data ou está apenas começando a se av
 ## Tecnologias utilizadas
 - MVVM com Clean Architecture
 - Hilt (Injeção de dependência)
+- Flow
 - Retrofit
 - OkHttp
 - Detekt (análise estática de código)
@@ -18,8 +19,8 @@ Não importa se você é um fã de longa data ou está apenas começando a se av
 - Caching Local com Room
 - Coil
 - Navigation
+- Adaptive Icon para Android 13
 - Testes unitários
-- Testes de interface
 
 ## 📸 Screenshots
 
@@ -33,7 +34,8 @@ Não importa se você é um fã de longa data ou está apenas começando a se av
 
 - Modularização (por feature)
 - Favoritos
-- Offline First
+- Testes de interface
+- Testes E2E
 - CI/CD
 - Crashlytics
 
