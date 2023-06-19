@@ -7,8 +7,8 @@ import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import androidx.paging.map
 import com.joselaine.marvelapp.data.db.AppDatabase
-import com.joselaine.marvelapp.domain.models.CharacterPaging
 import com.joselaine.marvelapp.domain.models.MarvelCharacter
+import com.joselaine.marvelapp.domain.usecase.base.ResultStatus
 import com.joselaine.marvelapp.presentation.paging.CharactersPagingSource
 import com.joselaine.marvelapp.presentation.paging.CharactersRemoteMediator
 import kotlinx.coroutines.flow.Flow
@@ -25,8 +25,12 @@ class CharactersRepositoryImpl @Inject constructor(
     }
 
 
-    override suspend fun getCharacter(id: Int): CharacterPaging {
-        return remoteDataSource.fetchCharacter(id)
+    override suspend fun getCharacter(id: Int): ResultStatus<MarvelCharacter> {
+        return try {
+            ResultStatus.Success(remoteDataSource.fetchCharacter(id).characters[0])
+        } catch (e: Exception) {
+            ResultStatus.Error(e)
+        }
     }
 
     override fun getCachedCharacters(
