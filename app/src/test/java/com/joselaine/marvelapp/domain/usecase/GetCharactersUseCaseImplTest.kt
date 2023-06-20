@@ -2,7 +2,7 @@ package com.joselaine.marvelapp.domain.usecase
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.joselaine.marvelapp.data.repository.CharactersRepository
+import com.joselaine.marvelapp.domain.repository.CharactersRepository
 import com.joselaine.marvelapp.utils.MainCoroutineRule
 import com.joselaine.marvelapp.utils.MarvelCharacterFactory
 import com.joselaine.marvelapp.utils.PagingSourceFactory

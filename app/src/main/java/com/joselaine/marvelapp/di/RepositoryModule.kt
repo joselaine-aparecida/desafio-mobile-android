@@ -2,7 +2,7 @@ package com.joselaine.marvelapp.di
 
 import com.joselaine.marvelapp.data.datasources.CharactersRemoteDataSourceImpl
 import com.joselaine.marvelapp.data.repository.CharactersRemoteDataSource
-import com.joselaine.marvelapp.data.repository.CharactersRepository
+import com.joselaine.marvelapp.domain.repository.CharactersRepository
 import com.joselaine.marvelapp.data.repository.CharactersRepositoryImpl
 import dagger.Binds
 import dagger.Module

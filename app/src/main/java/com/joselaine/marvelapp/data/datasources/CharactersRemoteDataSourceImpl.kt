@@ -1,9 +1,9 @@
 package com.joselaine.marvelapp.data.datasources
 
 import com.joselaine.marvelapp.data.MarvelApi
+import com.joselaine.marvelapp.data.models.toCharacterModel
 import com.joselaine.marvelapp.data.repository.CharactersRemoteDataSource
 import com.joselaine.marvelapp.domain.models.CharacterPaging
-import com.joselaine.marvelapp.domain.models.toCharacterModel
 import javax.inject.Inject
 
 class CharactersRemoteDataSourceImpl @Inject constructor(
