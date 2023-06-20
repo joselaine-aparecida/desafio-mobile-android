@@ -1,6 +1,6 @@
 package com.joselaine.marvelapp.domain.usecase
 
-import com.joselaine.marvelapp.data.repository.CharactersRepository
+import com.joselaine.marvelapp.domain.repository.CharactersRepository
 import com.joselaine.marvelapp.domain.models.MarvelCharacter
 import com.joselaine.marvelapp.domain.usecase.base.ResultStatus
 import com.joselaine.marvelapp.utils.MainCoroutineRule

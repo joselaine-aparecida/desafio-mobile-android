@@ -1,4 +1,4 @@
-package com.joselaine.marvelapp.data.repository
+package com.joselaine.marvelapp.domain.repository
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
